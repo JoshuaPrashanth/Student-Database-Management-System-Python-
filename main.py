@@ -130,9 +130,14 @@ while True:
         print(df)
 
     elif choice == "7":
-        df = get_data()
-        df.to_excel(r"C:\Users\prash\OneDrive\Desktop\PythonProject\Student Database Management System\Spreadsheet_Record.xlsx", index=False)
-        print("SpreadSheet has been Downloaded.")
+        ss_path = input("Enter the path to SAVE the SpreadSheet: ")
+        file_name = input("Enter the File name: ")
+        if ss_path and file_name:
+            df = get_data()
+            df.to_excel(rf"{ss_path}\{file_name}.xlsx", index=False)
+            print("\nSpreadSheet has been Downloaded.")
+        else:
+            print("Invalid Input!")
 
     elif choice == "8":
         confirm = input("Are you sure to CLEAR the database? (y/n) : ")

@@ -1,6 +1,6 @@
 # 🧑‍🎓 Student Database Management System (Python)
 
-A simple **Student Database Management System** written in **Python**, using the **Pandas** library to organize and export student data.  
+A simple **Student Database Management System** written in **Python**, using the **Pandas** library to organize and export student data to CUSTOM PATH.  
 This program runs entirely in the **terminal** and allows users to manage student records interactively.
 
 ---
@@ -13,7 +13,7 @@ This program runs entirely in the **terminal** and allows users to manage studen
 - 📄 View individual student details  
 - 🧮 Calculate and display grades based on marks  
 - 📊 Show all student details in tabular form  
-- 📂 Export student records to an Excel spreadsheet  
+- 📂 Export student records to an Excel spreadsheet to CUSTOM PATH  
 - 🧹 Clear the entire database  
 - 🚪 Exit safely
 
