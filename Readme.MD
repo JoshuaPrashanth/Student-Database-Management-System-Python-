@@ -1,26 +1,54 @@
-# 🎓 Student Database Management System (Python)
+# 🧑‍🎓 Student Database Management System (Python)
 
-This is a **Student Database Management System** built in Python that allows users to manage student records easily.  
-It provides features like adding, removing, viewing, and grading students. Additionally, it supports exporting records to a **CSV file** for further use.
-
----
-
-## 🚀 Features
-
-- ➕ **Add Student** – Add student details including Name, USN, and Marks.  
-- ➖ **Remove Student** – Remove a student from the database using their name.  
-- 📜 **View Database** – Display all student names in the database.  
-- 👤 **View Student Details** – Search and display a student's details (Name, Roll Number, Marks).  
-- 🏆 **View Student Grade** – Calculate and display a student’s grade:
-  - `A` → Marks ≥ 90  
-  - `B` → Marks ≥ 75  
-  - `C` → Marks ≥ 50  
-  - `F` → Marks < 50  
-- 📊 **Show All Student Details** – Display a tabular format of all students using **Pandas DataFrame**.  
-- 📂 **Export to CSV** – Save all student records as a CSV file.  
-- 🗑 **Clear Database** – Delete all records in one go.  
-- ❌ **Exit** – Quit the program.
+A simple **Student Database Management System** written in **Python**, using the **Pandas** library to organize and export student data.  
+This program runs entirely in the **terminal** and allows users to manage student records interactively.
 
 ---
 
+## 📋 Features
 
+- ➕ Add new students to the database  
+- ➖ Remove students from the database  
+- 👀 View list of all students  
+- 📄 View individual student details  
+- 🧮 Calculate and display grades based on marks  
+- 📊 Show all student details in tabular form  
+- 📂 Export student records to an Excel spreadsheet  
+- 🧹 Clear the entire database  
+- 🚪 Exit safely
+
+---
+
+## 🧠 How It Works
+
+The system uses a `Student` class to store individual student details (name, roll number, and marks).  
+All students are kept in Python lists (`student_list` and `student_name_list`) while the program runs.  
+A helper function `get_data()` converts this in-memory data into a **Pandas DataFrame** for display and exporting.
+
+---
+
+## 🏗️ Code Overview
+
+### 🧾 Class: `Student`
+```python
+class Student:
+    def __init__(self, name, roll_number, marks):
+        self.name = name
+        self.roll_number = roll_number
+        self.marks = marks
+
+    def display(self):
+        print(f"\n----Student details----\n"
+              f"Name : {self.name}\n"
+              f"Roll Number : {self.roll_number}\n"
+              f"Marks : {self.marks}")
+
+    def calculate_grade(self):
+        if self.marks >= 90:
+            print("Grade : A")
+        elif self.marks >= 75:
+            print("Grade : B")
+        elif self.marks >= 50:
+            print("Grade : C")
+        else:
+            print("Grade : F")
