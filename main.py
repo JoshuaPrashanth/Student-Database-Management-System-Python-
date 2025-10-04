@@ -1,3 +1,5 @@
+from pkgutil import get_data
+
 import pandas as pd
 from pandas.core.interchange.dataframe_protocol import DataFrame
 
@@ -26,7 +28,21 @@ class Student:
 
 student_list = []
 student_name_list = []
-all_student = []
+
+def get_data():
+    if not student_list:
+        print("DataBase is Empty")
+        return None
+    else:
+        marks_list = []
+        Roll_number_list = []
+        for i in student_list:
+            marks_list.append(i.marks)
+            Roll_number_list.append(i.roll_number)
+        data = {"Name": student_name_list, "USN": Roll_number_list, "Marks": marks_list}
+        df = pd.DataFrame(data)
+        return df
+
 while True:
     print("\n---------------------------------------------------------------------------------------------------------------")
     print("STUDENT DATABASE")
@@ -38,7 +54,7 @@ while True:
     print("4. View Student Details")
     print("5. View Grade of Student")
     print("6. Show all students Details")
-    print("7. Get CSV Record")
+    print("7. Get Records in SpreadSheet")
     print("8. Clear DataBase")
     print("9. Exit")
     choice = input("Select for operation : ")
@@ -55,8 +71,7 @@ while True:
         student = Student(student_name, student_USN, student_marks)
         student_list.append(student)
         student_name_list.append(student.name)
-        all_student = student_name_list.copy()
-        student_name_list.sort()
+
 
         print()
         print(f"New student \"{student_name}\" ADDED to DataBase")
@@ -111,24 +126,13 @@ while True:
                 print("Student not found in DataBase.")
 
     elif choice == "6":
-        if not student_list:
-            print("DataBase is Empty")
-        else:
-            marks_list = []
-            Roll_number_list = []
-            for i in student_list:
-                marks_list.append(i.marks)
-                Roll_number_list.append(i.roll_number)
-            data = {"Name": all_student, "USN": Roll_number_list, "Marks": marks_list}
-            df = pd.DataFrame(data)
-            print(df)
+        df = get_data()
+        print(df)
 
     elif choice == "7":
-        if not student_list:
-            print("DataBase is Empty")
-        else:
-            df.to_csv(r"C:\Users\prash\OneDrive\Desktop\PythonProject\Student Database Management System\CSV_Record.csv")
-            print("CSV has been Downloaded.")
+        df = get_data()
+        df.to_excel(r"C:\Users\prash\OneDrive\Desktop\PythonProject\Student Database Management System\Spreadsheet_Record.xlsx", index=False)
+        print("SpreadSheet has been Downloaded.")
 
     elif choice == "8":
         confirm = input("Are you sure to CLEAR the database? (y/n) : ")
